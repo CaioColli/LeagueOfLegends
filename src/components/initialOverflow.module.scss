@@ -1,0 +1,44 @@
+.overflow {
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .content {
+      width: 300px;
+      height: 150px;
+      position: relative;
+
+      .image {
+        object-fit: contain;
+      }
+    }
+
+    .spinner {
+      border: 5px solid #444444;
+      border-top: 5px solid #c79b3a;
+      animation: spin 2s linear infinite;
+      border-radius: 50%;
+      position: absolute;
+      width: 400px;
+      height: 400px;
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
+}
