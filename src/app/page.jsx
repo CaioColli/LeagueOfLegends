@@ -3,16 +3,27 @@
 import { useEffect, useState } from "react";
 import styles from "./page.module.scss";
 import InitialOverflow from "@/components/initialOverflow";
+import { getDataDragonApi } from "@/utils/useApi";
 
 export default function Home() {
   const [swowInitial, setShowInitial] = useState(true);
+  const [champs, setChamps] = useState([]);
 
   useEffect(() => {
     setTimeout(() => {
       setShowInitial(false);
-    }, 2000)
+    }, 1500);
+  }, []);
 
-  }, [])
+  useEffect(() => {
+    const loadChamps = async () => {
+      const dataDragon = await getDataDragonApi();
+      const { data } = await dataDragon.get("/champion.json");
+      setChamps(data);
+    };
+
+    loadChamps();
+  }, []);
 
   return (
     <div className={styles.page}>
