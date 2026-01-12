@@ -1,12 +1,29 @@
-html,
-body {
-    max-width: 100vw;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    overflow: hidden;
+@font-face {
+  font-family: "LolFontBold";
+  src: url("../../public/font/BeaufortforLOL-Bold.ttf");
 }
 
-h1, h2, h3, h4, h5, h6, p {
-    all: unset;
+@font-face {
+  font-family: "LolFontRegular";
+  src: url("../../public/font/BeaufortforLOL-Regular.ttf");
+}
+
+html,
+body {
+  max-width: 100vw;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  all: unset;
 }

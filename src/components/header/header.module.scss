@@ -1,0 +1,72 @@
+@import "@/styles/variables.scss";
+
+.header {
+  background-color: $black-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 24px;
+  gap: 16px;
+
+  div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    figure {
+      .logo {
+        max-width: 200px;
+      }
+    }
+
+    nav {
+      ul {
+        all: unset;
+        display: flex;
+        gap: 24px;
+        li {
+          all: unset;
+          color: $gray-color;
+
+          .link {
+            all: unset;
+            cursor: pointer;
+            font-family: "LolFontBold";
+            font-size: 18px;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+              color: $golden-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .input_container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: $dark-gray-color;
+    padding: 10px;
+    border-radius: 16px;
+
+    label {
+      cursor: pointer;
+
+      .icon {
+        color: $gray-color;
+        font-size: 24px;
+      }
+    }
+
+    input {
+      all: unset;
+      width: fit-content;
+      color: $white-color;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+}

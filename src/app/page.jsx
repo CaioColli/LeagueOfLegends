@@ -2,8 +2,11 @@
 
 import { useEffect, useState } from "react";
 import styles from "./page.module.scss";
-import InitialOverflow from "@/components/initialOverflow";
-import { getDataDragonApi } from "@/utils/useApi";
+import InitialOverflow from "@/components/overflow/initialOverflow";
+import { getApi } from "@/utils/api";
+import { CgClose } from "react-icons/cg";
+import Header from "@/components/header/header";
+import SectionHeader from "@/components/sectionHeader/sectionHeader";
 
 export default function Home() {
   const [swowInitial, setShowInitial] = useState(true);
@@ -17,9 +20,9 @@ export default function Home() {
 
   useEffect(() => {
     const loadChamps = async () => {
-      const dataDragon = await getDataDragonApi();
-      const { data } = await dataDragon.get("/champion.json");
-      setChamps(data);
+      const api = await getApi();
+      const { data } = await api.get("/champion.json");
+      setChamps(data.data);
     };
 
     loadChamps();
@@ -30,9 +33,21 @@ export default function Home() {
       {swowInitial ? (
         <InitialOverflow />
       ) : (
-        <main className={styles.main}>
-          <h1>Aqui os campeões</h1>
-        </main>
+        <>
+          <Header />
+
+          <main>
+            <SectionHeader
+              title="Campeão"
+            />
+          </main>
+
+          <section>
+            <SectionHeader
+              title="Item"
+            />
+          </section>
+        </>
       )}
     </div>
   );

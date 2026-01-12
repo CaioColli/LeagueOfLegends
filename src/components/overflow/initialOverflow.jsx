@@ -11,6 +11,7 @@ const InitialOverflow = () => {
                         src="/images/lol-logo.webp"
                         alt="Logo League Of Legends"
                         fill
+                        sizes="300px"
                         priority
                     />
 
