@@ -8,5 +8,30 @@
   main {
     display: flex;
     justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    ul {
+      all: unset;
+      padding: 0 10%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300, 1fr));
+      gap: 48px;
+
+      .link {
+        all: unset;
+        cursor: pointer;
+
+        li {
+          all: unset;
+          height: 600px;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
   }
 }

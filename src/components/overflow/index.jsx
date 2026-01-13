@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./initialOverflow.module.scss";
+import styles from "./index.module.scss";
 
 const InitialOverflow = () => {
     return (

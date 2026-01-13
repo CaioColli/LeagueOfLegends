@@ -5,18 +5,34 @@ export const baseDataDragonApi = axios.create({
   timeout: 10000,
 });
 
-export const getApi = async () => {
+export const lastVersion = async () => {
   try {
     const { data } = await baseDataDragonApi.get("/api/versions.json");
-    const lastVersion = data[0];
-    console.log(lastVersion); 
+    return data[0];
+  } catch (error) {
+    console.error(error);
+    throw new Error(
+      "Nao foi possivel carregar as versões de League of Legends."
+    );
+  }
+};
 
+export const getDataApi = async (version) => {
+  try {
     return axios.create({
-      baseURL: `https://ddragon.leagueoflegends.com/cdn/${lastVersion}/data/pt_BR`,
+      baseURL: `https://ddragon.leagueoflegends.com/cdn/${version}/data/pt_BR`,
       timeout: 10000,
     });
   } catch (error) {
     console.error(error);
     throw new Error("Nao foi possivel carregar os dados do League of Legends.");
   }
+};
+
+export const getChampThumbnail = (url) => {
+  return `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${url}`;
+};
+
+export const getImage = (version, url) => {
+  return `https://ddragon.leagueoflegends.com/cdn/${version}/img/${url}`;
 };

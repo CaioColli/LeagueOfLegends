@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "./header.module.scss";
+import styles from "./index.module.scss";
 import { IoSearch } from "react-icons/io5";
 
 const Header = () => {

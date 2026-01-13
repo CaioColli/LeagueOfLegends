@@ -2,14 +2,16 @@
 
 import { useEffect, useState } from "react";
 import styles from "./page.module.scss";
-import InitialOverflow from "@/components/overflow/initialOverflow";
-import { getApi } from "@/utils/api";
-import { CgClose } from "react-icons/cg";
-import Header from "@/components/header/header";
-import SectionHeader from "@/components/sectionHeader/sectionHeader";
+import InitialOverflow from "@/components/overflow";
+import { getDataApi, lastVersion } from "@/utils/api";
+import Header from "@/components/header";
+import SectionHeader from "@/components/sectionHeader";
+import ChampionCard from "@/components/championCard";
+import Link from "next/link";
 
 export default function Home() {
   const [swowInitial, setShowInitial] = useState(true);
+  const [version, setVersion] = useState(null);
   const [champs, setChamps] = useState([]);
 
   useEffect(() => {
@@ -19,14 +21,25 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    const loadVersion = async () => {
+      const version = await lastVersion();
+      setVersion(version);
+    }
+
+    loadVersion();
+  }, [])
+
+  useEffect(() => {
+    if (!version) return;
+
     const loadChamps = async () => {
-      const api = await getApi();
+      const api = await getDataApi(version);
       const { data } = await api.get("/champion.json");
-      setChamps(data.data);
+      setChamps(Object.values(data.data));
     };
 
     loadChamps();
-  }, []);
+  }, [version]);
 
   return (
     <div className={styles.page}>
@@ -40,6 +53,24 @@ export default function Home() {
             <SectionHeader
               title="Campeão"
             />
+
+            <ul>
+              {champs && champs.map((champ) => {
+                return (
+                  <Link
+                    href={`/champion/${champ.id}`}
+                    key={champ.id}
+                    className={styles.link}
+                  >
+                    <li>
+                      <ChampionCard
+                        data={champ}
+                      />
+                    </li>
+                  </Link>
+                )
+              })}
+            </ul>
           </main>
 
           <section>

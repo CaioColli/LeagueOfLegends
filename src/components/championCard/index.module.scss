@@ -1,0 +1,51 @@
+@import "@/styles/variables.scss";
+
+.card {
+  all: unset;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+
+  .image {
+    object-fit: initial;
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+  }
+
+  footer {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+    padding: 16px;
+    background-color: rgb(43, 40, 73);
+    transition: all 0.3s ease-in-out;
+    z-index: 999;
+
+    h2 {
+      font-family: "LolFontBold";
+      font-size: 32px;
+      color: $white-color;
+    }
+
+    span {
+      color: $white-color;
+      font-family: "LolFontBold";
+      font-size: 18px;
+    }
+  }
+
+  &:hover {
+    .image {
+      transform: scale(1.2);
+    }
+
+    footer {
+      background-color: rgb(64, 59, 117);
+    }
+  }
+}
